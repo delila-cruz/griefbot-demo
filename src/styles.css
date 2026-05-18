@@ -99,6 +99,7 @@ nav a.content-container:not(:first-child) {
   text-align: right;
   color: var(--user-color);
 }
+
 .chat-passage {
   display: inline-block;
   padding: 0.25rem 0.5rem;
@@ -230,6 +231,7 @@ nav a.content-container:not(:first-child) {
   background-size: 30px 30px;
   border-radius: 15px;
   background-color: var(--speaker-color);
+  display: none;
 }
 .chat-passage-wrapper[data-speaker="you"]:before {
   display: none;
@@ -321,6 +323,7 @@ body {
   border-radius: 20px;
   padding: 6px 12px;
 }
+
 
 /* .left-sidebar {
   background-color: #f9f9f9;
