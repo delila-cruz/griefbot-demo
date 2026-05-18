@@ -719,6 +719,34 @@ var LZString=function(){var o=String.fromCharCode,r="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 },{"jquery":1,"lz-string":2,"underscore":4}]},{},[5]);
 
+// 1. Select the node that will be observed for mutations
+const targetNode = document.body;
+
+// 2. Options for the observer (which mutations to observe)
+const config = { childList: true, subtree: true };
+
+// 3. Callback function to execute when mutations are observed
+const callback = (mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(node => {
+                // Check if the added node is an element (nodeType 1)
+                if (node.nodeType === 1) {
+                    console.log('New element added:', node);
+                    // Run your custom code here
+                    let eles = document.querySelectorAll('[data-speaker="..."]'); 
+                    eles.forEach((item) => { item.dataset.speaker = story.state.botName;  });
+                }
+            });
+        }
+    }
+};
+
+// 4. Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// 5. Start observing the target node for configured mutations
+observer.observe(targetNode, config);
 
 </script>
 </body>
